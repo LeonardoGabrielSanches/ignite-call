@@ -22,6 +22,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   timeIntervals UserTimeIntervals[]
+  Scheduling    Scheduling[]
 
   @@map("users")
 }
@@ -64,4 +65,18 @@ model UserTimeIntervals {
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
+}
+
+model Scheduling {
+  id           String   @id @default(uuid())
+  date         DateTime
+  name         String
+  email        String
+  observations String?
+  created_at   DateTime @default(now())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("schedulings")
 }
