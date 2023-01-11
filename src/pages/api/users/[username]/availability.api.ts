@@ -59,7 +59,7 @@ export default async function handler(
 
     const isTimeInPast = referenceDate.set('hour', time).isBefore(new Date())
 
-    return !isTimeBlocked || !isTimeInPast
+    return isTimeBlocked || isTimeInPast
   })
 
   return res.json({ possibleTimes, availableTimes })
